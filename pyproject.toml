@@ -1,6 +1,19 @@
 [project]
 name = "nestor-server"
 version = "0.1.0"
+description = "Nestor Mobile App Build"
 dependencies = [
     "flet>=0.26.0",
 ]
+
+[tool.flet]
+# The name displayed under the app icon on your smartphone
+name = "NestorApp"
+
+# Unique identifier for the phone operating system (use no spaces)
+org = "com.nestorserver"
+
+# Targeted build configurations
+[tool.flet.android]
+version_code = 1
+version_name = "1.0.0"
