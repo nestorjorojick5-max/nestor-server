@@ -1,0 +1,26 @@
+name: Build App Packages
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter Engine Environment
+        id: build
+        uses: flet-dev/flet-build-action@v1
+        with:
+          target: apk
+          runner-python-version: "3.13"
+
+      - name: Save Mobile App Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk-package
+          path: ${{ steps.build.outputs.archive-path }}
